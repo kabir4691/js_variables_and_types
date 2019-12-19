@@ -5,32 +5,32 @@
 * [ ] Logical AND operation
 
 ```js
-true  && true; //output
-true  && false;
-false && true;
-false && false;
-"foo" && "bar";
-"bar" && "foo";
-"foo" && "";
-""    && "foo";
-" "   && "John" && "" && false
-false && "Hey" && undefined
-"undefined" && false && 42
+true  && true; //true
+true  && false; //false 
+false && true; //false
+false && false; //false
+"foo" && "bar"; //"bar"
+"bar" && "foo"; //"foo"
+"foo" && "";  //""
+""    && "foo"; //"foo"
+" "   && "John" && "" && false //""
+false && "Hey" && undefined //false
+"undefined" && false && 42 //false
 ```
 
 * [ ] Logical OR operation
 ```js
-true  || true;
-true  || false;
-false || true;
-false || false;
-"foo" || "bar";
-"bar" || "foo";
-"foo" || "";
-""    || "foo";
-" "   || "John" || "" || false
-false || "Hey" || undefined
-"undefined" || false || 42
+true  || true; //true
+true  || false; //true
+false || true; //true
+false || false; //false
+"foo" || "bar"; //"foo"
+"bar" || "foo"; //"bar"
+"foo" || ""; //"foo"
+""    || "foo"; //""
+" "   || "John" || "" || false //" "
+false || "Hey" || undefined //"Hey"
+"undefined" || false || 42 "undefined"
 ```
 
 2. 🥈You have two variables i.e `isGuestOneVeg` and  `isGuestTwoVeg` according to the value using logical && and || opeartor do the following.
@@ -41,7 +41,15 @@ false || "Hey" || undefined
 ```js
 let isGuestOneVeg = false;
 let isGuestTwoVeg = false;
-// Your code goes here
+let message;
+if (isGuestOneVeg && isGuestTwoVeg) {
+    message = "Only offer up vegan dishes.";
+} else if (isGuestOneVeg || isGuestTwoVeg) {
+    message = "Make sure to offer up some vegan options.";
+} else {
+    message = "Offer up anything on the menu";
+}
+alert(message);
 ```
 
 
@@ -51,10 +59,19 @@ let isGuestTwoVeg = false;
 * [ ] else 'Go for it. It is pretty nice out'
 ```js
 let temperature = 4;
-// Your code goes here
+let message;
+if (temperature < 32) {
+    message = "It is freezing outside";
+} else if (temperature > 110) {
+    message = "It is hot outside";
+} else {
+    message = "Go for it. It is pretty nice out";
+}
+alert(message);
 ```
 
 4. 🎖 Output of this and the reason behind the output.
 ```js
 alert( alert(1) || 2 || alert(3) );
 ```
+<!-- It will alert 1 and then alert 2. Let's go from left to right. Before the outermost alert can execute, it must calculate its message's value. So, inside it's message block lies the code " alert(1) || 2 || alert(3) ".  When this inner code is executing, the alert(1) will first execute to get its return value. Hence, the user can see an alert with the number 1. When the value of that alert is returned as undefined, we then move on to the next item in the or condition. The next condition is 2, which is a truthy value. Since we search for the first truthy value in an or condition, 2 is returned as the value to the outer alert function. Hence, the user can then see an alert with the number 2.-->
